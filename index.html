@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .btn {
+            width: 70px;
+            height: 30px;
+            border-radius: 5px;
+            border: none;
+            box-shadow: 5px 3px gray;
+            background-color: #c7c3c3;
+        }
+
+        .btn:hover {
+            background-color: gray;
+            box-shadow: 5px 3px #cec7c7;
+        }
+
+        .btn.btn1 {
+            margin-right: 18px;
+        }
+    </style>
+</head>
+<body>
+<h1>Tính cân nặng</h1>
+<h1>Hển thị số ngày của tháng nhập vào</h1>
+<input type="text" id="inputDay">
+<button type="button" onclick="tinhSoNgay()">Tính số ngày</button>
+<h1>Do you love me?</h1>
+<p id="love"></p>
+<button id="click1" class="btn btn1" onclick="heart()">Yes</button>
+<button id="click2" class="btn btn2" onmousemove="clickMe()">No</button>
+<script>
+    // Tính chỉ số BMI
+    let weight = +prompt("Nhập cân nặng:");
+    let height = +prompt("Nhập chiều cao:");
+    let bmi = weight / (height ^ 2);
+    if (bmi < 30) {
+        console.log("Overweight");
+    } else if (bmi < 25) {
+        console.log("Normal");
+    } else if (bmi < 18) {
+        console.log("Underweight");
+    } else {
+        console.log("Obese");
+    }
+
+    //B1
+    let age = +prompt("Nhập tuổi:")
+    if (age > 18) {
+        console.log("Đủ tuổi")
+    }
+    //B2
+    let a = +prompt("Nhập số:")
+    if (a % 2 == 0) {
+        console.log("Hello");
+    } else {
+        console.log("Hi");
+    }
+
+    //B3
+    let x = +prompt("Nhập x:")
+    let y = +prompt("Nhập y:")
+    let result;
+    if (x > y) {
+        result = x + y;
+        console.log("Tổng là: " + result);
+    }
+    if (x < y) {
+        result = x * y;
+        console.log("Tích là: " + result);
+    }
+    if (x = y) {
+        console.log("HIhi");
+    }
+    //B4
+    let number1 = +prompt("Nhập number1:");
+    let number2 = +prompt("Nhập number2:");
+    let number3 = +prompt("Nhập number3:");
+    if (number1 > number2 && number1 > number3) {
+        console.log("Số lớn nhất là: " + number1);
+    } else {
+        if (number2 > number3) {
+            console.log("Số lớn nhất là: " + number2);
+        } else {
+            console.log("Số lớn nhất là: " + number3);
+        }
+    }
+
+</script>
+<script>
+    // Bài do you love
+    let button1 = document.getElementById("click1");
+    let button2 = document.getElementById("click2");
+    let result = document.getElementById("love");
+    let jump = 0;
+
+    function heart() {
+        result.innerHTML = "Yes, I do";
+        button2.style.top = "0px";
+        button2.style.left = "0px";
+        jump = 0;
+
+    }
+
+    function init() {
+        button2.style.position = "relative";
+        button2.style.top = "0px";
+        button2.style.left = "0px";
+    }
+
+    function clickMe() {
+        result.innerHTML = "";
+        jump += 1;
+        console.log(jump)
+        if (jump == 1) {
+            button2.style.top = parseInt(button2.style.top) + Math.random() * 100 + 'px';
+            button2.style.left = parseInt(button2.style.left) + Math.random() * 70 + 'px';
+        } else {
+            button2.style.top = parseInt(button2.style.top) - Math.random() * 100 + 'px';
+            button2.style.left = parseInt(button2.style.left) - Math.random() * 70 + 'px';
+            jump = 0;
+        }
+    }
+
+    window.onload = init;
+</script>
+
+
+<script>
+    // Nhập tháng hiển thị số ngày của tháng
+    function tinhSoNgay() {
+        let day = +document.getElementById("inputDay").value;
+        if (day > 0 && day <= 12) {
+            switch (day) {
+                case 4:
+                    console.log("Tháng 4 có 30 ngày");
+                    break;
+                case 6:
+                    console.log("Tháng 6 có 30 ngày");
+                    break;
+                case 9:
+                    console.log("Tháng 9 có 30 ngày");
+                    break;
+                case 11:
+                    console.log("Tháng 11 có 30 ngày");
+                    break;
+                case 2:
+                    console.log("Tháng 2 có 28 hặc 29 ngày");
+                    break;
+                default:
+                    console.log(`Tháng ${day} có 31 ngày`);
+            }
+        } else {
+            console.log("Vui lòng nhập 1-12.")
+        }
+    }
+</script>
+</body>
+</html>
